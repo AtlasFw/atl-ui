@@ -1,25 +1,27 @@
 <script setup>
 import { onMounted, onUnmounted, reactive } from 'vue';
+import Start from './common/index.js'
 import Hud from './components/Hud.vue';
 import Carhud from './components/Carhud.vue';
 import Feedback from './components/Feedback.vue';
-import { NMessageProvider, NDialogProvider } from 'naive-ui'
+import { NMessageProvider, NDialogProvider, NNotificationProvider } from 'naive-ui'
 
 const state = reactive({
   global: {
     duration: 5000,
-    max: 5,
-    position: 'top',
+    max: 3,
+    position: 'top-right',
   }
 });
 
 const handleMessage = (e) => {
-  switch (e.data.type) {
+  const duration = e.data.duration || state.global.duration
+  switch (e.data.action) {
     case 'startup':
 
       break
     case 'adv-notify':
-
+      Start.AdvNotify(e.data.type, e.data.title, e.data.description, e.data.content, duration, e.data.meta, e.data.avatar)
       break;
     case 'alert':
 
@@ -43,10 +45,10 @@ const handleMessage = (e) => {
 
       break;
     case 'progress':
-
+      Start.Progress(e.data.duration)
       break;
     case 'notify':
-
+      Start.Notify(e.data.type, e.data.message, duration)
       break;
     case 'spinner':
 
@@ -54,17 +56,32 @@ const handleMessage = (e) => {
   }
 }
 
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'Escape') {
+    window.dispatchEvent(
+        new MessageEvent('message', {
+          data: {
+            action: 'progress',
+            duration: Math.floor(Math.random() * 5000) + 1000,
+          }
+        })
+    )
+  }
+})
+
 onMounted(() => window.addEventListener('message', handleMessage));
 onUnmounted(() => window.removeEventListener('message', handleMessage));
 </script>
 
 <template>
-  <NMessageProvider :duration="state.global.duration">
-    <NDialogProvider>
-      <Hud/>
-      <Carhud/>
-      <Feedback/>
-    </NDialogProvider>
+  <NMessageProvider :placement="state.global.position" :max="state.global.max">
+    <NNotificationProvider :placement="state.global.position" :max="state.global.max">
+      <NDialogProvider>
+        <Hud/>
+        <Carhud/>
+        <Feedback/>
+      </NDialogProvider>
+    </NNotificationProvider>
   </NMessageProvider>
 </template>
 
