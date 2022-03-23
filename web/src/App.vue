@@ -20,7 +20,7 @@ const handleMessage = (e) => {
     case 'startup':
 
       break
-    case 'adv-notify':
+    case 'advNotify':
       Start.AdvNotify(e.data.type, e.data.title, e.data.description, e.data.content, duration, e.data.meta, e.data.avatar)
       break;
     case 'alert':
