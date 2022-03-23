@@ -5,7 +5,7 @@ import { useMessage, useNotification, NProgress  } from 'naive-ui'
 const state = reactive({
   progress: {
     active: false,
-    status: 'success',
+    status: 'info',
     type: 'line',
     value: 0,
     strokeWidth: 6,
@@ -17,9 +17,13 @@ const state = reactive({
 
 window.$notify = useMessage()
 window.$advnotify = useNotification()
-window.$progress = (duration) => {
+window.$progress = (type, status, duration, indicator, placement) => {
   if (state.progress.active) return false
   duration < 1000 ? duration = 1000 : null
+  state.progress.status = status || 'info'
+  state.progress.type = type || 'line'
+  state.progress.indicator = indicator || true
+  state.progress.placement = placement || 'inside'
   state.progress.active = true
 
   const progress = () => {

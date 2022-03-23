@@ -1,17 +1,17 @@
-local function advancedNotify(type, title, description, content, duration, meta, avatar)
-	if not type or not title or not description or not content then
+local function advancedNotify(data)
+	if type(data.title) ~= 'string' or type(data.description) ~= 'string' or type(data.content) ~= 'string' then
 		print('UI: Missing required arguments for advNotify')
 		return
 	end
 
 	SendNUIMessage({
 		type = 'advNotify',
-		title = title,
-		description = description,
-		content = content,
-		duration = duration,
-		meta = meta or nil,
-		avatar = avatar or nil
+		title = data.title,
+		description = data.description,
+		content = data.content,
+		duration = data.duration,
+		meta = data.meta,
+		avatar = data.avatar
 	})
 end
 
