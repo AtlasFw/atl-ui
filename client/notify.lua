@@ -8,7 +8,7 @@ local function notify(type, message, duration)
     action = 'notify',
     type = type,
     message = message,
-    duration = duration or 2000
+    duration = duration
   })
 end
 
