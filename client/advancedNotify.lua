@@ -1,7 +1,7 @@
 local function advancedNotify(data)
 	if type(data.title) ~= 'string' or type(data.description) ~= 'string' or type(data.content) ~= 'string' then
-		print('UI: Missing required arguments for advNotify')
-		return
+		error('UI: Missing required arguments for advNotify')
+		return false
 	end
 
 	SendNUIMessage({

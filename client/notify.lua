@@ -1,7 +1,7 @@
 local function notify(data)
-  if type(data.type) ~= 'string' or type(message) ~= 'string' then
-    print('UI: Missing required parameters for notify')
-    return
+  if type(data.type) ~= 'string' or type(data.message) ~= 'string' then
+    error('UI: Missing required parameters for notify')
+    return false
   end
 
   SendNUIMessage({
