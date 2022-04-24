@@ -1,5 +1,5 @@
 import { NAvatar } from 'naive-ui'
-import { defineComponent, h } from 'vue'
+import { h } from 'vue'
 
 const TYPES = {
   success: 'success',
@@ -9,11 +9,9 @@ const TYPES = {
 }
 
 export const AdvNotify = (type, title, description, content, duration, meta, avatar) => {
-  const t = TYPES[type.toLowerCase()]
-  console.log('Type:', t)
   if (window.$advnotify) {
+    const t = TYPES[type.toLowerCase()]
     if (t) {
-      console.log(duration)
       if (avatar !== undefined) {
           window.$advnotify[t]({
             title: title,

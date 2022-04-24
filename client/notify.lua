@@ -1,4 +1,4 @@
-local function notify(data)
+UI.Notify = function(data)
   if type(data.type) ~= 'string' or type(data.message) ~= 'string' then
     error('UI: Missing required parameters for notify')
     return false
@@ -8,8 +8,6 @@ local function notify(data)
     action = 'notify',
     type = data.type,
     message = data.message,
-    duration = data.duration
+    duration = data.duration,
   })
 end
-
-exports('Notify', notify)

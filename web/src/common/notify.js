@@ -1,6 +1,3 @@
-import { useMessage } from 'naive-ui'
-import { defineComponent } from 'vue'
-
 const TYPES = {
   success: 'success',
   info: 'info',
@@ -9,15 +6,10 @@ const TYPES = {
 }
 
 export const Notify = (type, message, duration) => {
-  // You need to ensure that window.$message = message has been executed in setup
-  const t = TYPES[type.toLowerCase()]
-  console.log('Type:', t)
   if (window.$notify) {
+    const t = TYPES[type.toLowerCase()]
     if (t) {
-    console.log(duration)
-      window.$notify[t](message, {
-        duration: duration,
-      })
+      window.$notify[t](message, { duration: duration })
       return
     }
   }

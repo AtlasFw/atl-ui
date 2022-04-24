@@ -45,7 +45,7 @@ const handleMessage = (e) => {
 
       break;
     case 'progress':
-      Start.Progress(e.data.duration)
+      Start.Progress(e.data.type, e.data.status, e.data.duration, e.data.indicator, e.data.placement)
       break;
     case 'notify':
       Start.Notify(e.data.type, e.data.message, duration)
@@ -62,7 +62,9 @@ document.addEventListener('keyup', (e) => {
         new MessageEvent('message', {
           data: {
             action: 'progress',
-            duration: Math.floor(Math.random() * 5000) + 1000,
+            type: 'circle',
+            status: 'success',
+            duration: (Math.floor(Math.random() * 5000) + 1000),
           }
         })
     )

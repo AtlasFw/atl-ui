@@ -1,7 +1,9 @@
 <script setup>
 import { reactive } from 'vue';
 import { useMessage, useNotification, NProgress  } from 'naive-ui'
+import fetchNui from '../utils/fetchNui.js'
 
+// https://www.naiveui.com/en-US/dark/components/progress for more info
 const state = reactive({
   progress: {
     active: false,
@@ -19,9 +21,9 @@ window.$notify = useMessage()
 window.$advnotify = useNotification()
 window.$progress = (type, status, duration, indicator, placement) => {
   if (state.progress.active) return false
-  duration < 1000 ? duration = 1000 : null
-  state.progress.status = status || 'info'
+  !duration || duration < 1000 ? duration = 1000 : null
   state.progress.type = type || 'line'
+  state.progress.status = status || 'info'
   state.progress.indicator = indicator || true
   state.progress.placement = placement || 'inside'
   state.progress.active = true
@@ -31,6 +33,7 @@ window.$progress = (type, status, duration, indicator, placement) => {
     if (state.progress.value >= 100) {
       state.progress.active = false
       state.progress.value = 0
+      fetchNui('endProgress')
       return true
     }
     newValue >= 100 ? state.progress.value = 100 : state.progress.value = newValue
