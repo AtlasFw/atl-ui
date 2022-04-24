@@ -33,7 +33,7 @@ const handleMessage = (e) => {
 
       break;
     case 'countdown':
-
+      Start.Countdown(e.data.start, e.data.duration)
       break;
     case 'dialog':
 
@@ -88,6 +88,8 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -10,4 +10,5 @@ UI.Notify = function(data)
     message = data.message,
     duration = data.duration,
   })
+  return true
 end

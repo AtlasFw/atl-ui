@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{vue,js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lato: "'Lato', sans-serif",
+      }
+    },
   },
   plugins: [],
 }
