@@ -3,5 +3,5 @@ export const Countdown = (start, duration) => {
     window.$countdown(start, duration)
     return
   }
-  console.log('Could not send notification')
+  console.log('Could not set countdown')
 }
