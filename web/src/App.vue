@@ -53,8 +53,9 @@ document.addEventListener('keyup', (e) => {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'hud',
-						health: 50,
+            action: 'notify',
+						type: 'info',
+						message: 'You pressed the Escape key!'
           }
         })
     )

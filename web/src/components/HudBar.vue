@@ -10,7 +10,7 @@ defineProps({
 	},
 	background: {
 		type: String,
-		default: "rgba(47,47,47,0.71)"
+		default: "rgba(33,49,61,0.71)"
 	},
 	value: {
 		type: Number,
