@@ -26,14 +26,8 @@ const handleMessage = (e) => {
     case 'alert':
 
       break;
-    case 'badge':
-
-      break;
     case 'carhud':
 
-      break;
-    case 'countdown':
-      Start.Countdown(e.data.start, e.data.duration)
       break;
     case 'dialog':
 

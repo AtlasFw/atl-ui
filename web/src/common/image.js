@@ -1,6 +1,6 @@
-export const Image = (start, duration) => {
+export const Image = (position) => {
   if (window.$image) {
-    window.$image(start, duration)
+    window.$image(position)
     return
   }
   console.log('Could not set countdown')

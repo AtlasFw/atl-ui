@@ -14,10 +14,6 @@ const state = reactive({
     height: 14,
     indicator: true,
     placement: 'inside'
-  },
-  countdown: {
-    active: false,
-    duration: 0
   }
 })
 
@@ -46,24 +42,6 @@ window.$progress = (type, status, duration, indicator, placement) => {
   new Promise(() => setTimeout(progress, 150));
   return true
 }
-window.$countdown = (start, duration) => {
-  if (!start) {
-    fetchNui('endCountdown', { duration: state.countdown.duration, cancelled: true })
-    return true
-  }
-
-  if (state.countdown.active) return false
-  !duration || duration < 1000 ? duration = 1000 : null
-  state.countdown.active = true
-  state.countdown.duration = duration
-  return true
-}
-
-const endCountdown = () => {
-  state.countdown.active = false
-  state.countdown.duration = 0
-  fetchNui('endCountdown', { duration: state.countdown.duration, cancelled: false })
-}
 </script>
 
 <template>
@@ -73,9 +51,6 @@ const endCountdown = () => {
         <NProgress v-if="state.progress.active" :status="state.progress.status" :type="state.progress.type" :height="state.progress.height" :indicator-placement="state.progress.placement" :percentage="state.progress.value"/>
       </transition>
     </div>
-    <span class="absolute top-5 text-3xl font-bold font-lato text-white">
-      <NCountdown v-if="state.countdown.active" :active="state.countdown.active" :duration="state.countdown.duration" :on-finish="endCountdown" />
-    </span>
   </div>
 </template>
 
