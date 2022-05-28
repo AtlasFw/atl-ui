@@ -21,7 +21,7 @@ defineProps({
 
 <template>
 	<div :id="barId" :style="{backgroundColor: background}" class="relative opacity-70 bars flex overflow-hidden">
-		<span :style="{backgroundColor: fill, width: `${value}%`}" class="h-full z-30 bg-green-500 absolute"></span>
+		<span :style="{backgroundColor: fill, width: `${value}%`}" class="h-full z-30 bg-green-500 absolute transition-all duration-150"></span>
 	</div>
 </template>
 
