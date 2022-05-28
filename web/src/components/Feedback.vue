@@ -45,7 +45,7 @@ window.$progress = (type, status, duration, indicator, placement) => {
 </script>
 
 <template>
-  <div class="absolute w-screen h-screen left-0 top-0 bg-slate-800 flex justify-center items-center">
+  <div class="absolute w-screen h-screen left-0 top-0 flex justify-center items-center">
     <div class="w-[25%] mt-[25%]">
       <transition name="slide-fade">
         <NProgress v-if="state.progress.active" :status="state.progress.status" :type="state.progress.type" :height="state.progress.height" :indicator-placement="state.progress.placement" :percentage="state.progress.value"/>

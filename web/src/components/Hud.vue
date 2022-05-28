@@ -1,21 +1,17 @@
 <script setup>
+import HudBar from './HudBar.vue'
+defineProps({
+	health: {
+		type: Number,
+		required: true
+	},
+})
 </script>
 
 <template>
-  <div class="absolute h-full w-full bg-green-500 left-0 top-0 flex justify-start items-end">
+  <div class="absolute h-full w-full left-0 top-0 flex justify-start items-end">
 		<div class="z-20 w-full flex flex-col">
-			<div class="relative h-3 bg-blue-50 bars flex overflow-hidden">
-				<span class="h-full z-30 bg-green-500 w-[90%] absolute"></span>
-			</div>
-			<div class="relative h-3 bg-blue-50 bars flex overflow-hidden">
-				<span class="h-full z-30 bg-green-500 w-[90%] absolute"></span>
-			</div>
-			<div class="relative h-3 bg-blue-50 bars flex overflow-hidden">
-				<span class="h-full z-30 bg-green-500 w-[90%] absolute"></span>
-			</div>
-			<div class="relative h-3 bg-blue-50 bars flex overflow-hidden">
-				<span class="h-full z-30 bg-green-500 w-[90%] absolute"></span>
-			</div>
+			<HudBar bar-id="health" :value="health"/>
 		</div>
   </div>
 </template>

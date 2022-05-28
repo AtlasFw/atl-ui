@@ -11,7 +11,8 @@ const state = reactive({
     duration: 5000,
     max: 3,
     position: 'top-right',
-  }
+  },
+	health: 100,
 });
 
 const handleMessage = (e) => {
@@ -33,7 +34,7 @@ const handleMessage = (e) => {
 
       break;
     case 'hud':
-
+			state.health = e.data.health
       break;
     case 'image':
 
@@ -44,9 +45,6 @@ const handleMessage = (e) => {
     case 'notify':
       Start.Notify(e.data.type, e.data.message, duration)
       break;
-    case 'spinner':
-
-      break;
   }
 }
 
@@ -55,10 +53,8 @@ document.addEventListener('keyup', (e) => {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'progress',
-            type: 'circle',
-            status: 'success',
-            duration: (Math.floor(Math.random() * 5000) + 1000),
+            action: 'hud',
+						health: 50,
           }
         })
     )
@@ -73,7 +69,7 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
   <NMessageProvider :placement="state.global.position" :max="state.global.max">
     <NNotificationProvider :placement="state.global.position" :max="state.global.max">
       <NDialogProvider>
-        <Hud/>
+        <Hud :health="state.health"/>
         <Carhud/>
         <Feedback/>
       </NDialogProvider>
