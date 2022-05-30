@@ -90,7 +90,7 @@ setInterval(() => {
       </transition>
     </div>
   </div>
-	<div class="absolute bg-slate-900 w-screen h-screen flex flex-col justify-start items-center">
+	<div class="absolute w-screen h-screen flex flex-col justify-start items-center">
 		<div v-for="(alert, index) in state.alerts">
 			<transition name="slide-fade2">
 				<NAlert v-if="alert.show" class="w-[25vw] mt-3 enter-from-top" :title="alert.title" :type="alert.type">
