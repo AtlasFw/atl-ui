@@ -14,3 +14,5 @@ UI.AdvancedNotify = function(data)
     avatar = data.avatar,
   })
 end
+
+RegisterNetEvent('atl-ui:client:advNotify', UI.AdvancedNotify)

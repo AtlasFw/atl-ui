@@ -1,3 +1,5 @@
+import { fetchNui } from "../utils/fetchNui";
+
 const TYPES = {
 	success: 'success',
 	info: 'info',
@@ -5,7 +7,7 @@ const TYPES = {
 	error: 'error',
 }
 
-export const Dialog = (type, title, content, posBtn, negBtn, posMsg, negMsg) => {
+export const Dialog = (id, type, title, content, posBtn, negBtn, posMsg, negMsg) => {
 	if (window.$dialog) {
 		const t = TYPES[type.toLowerCase()]
 		if (t) {
@@ -18,10 +20,14 @@ export const Dialog = (type, title, content, posBtn, negBtn, posMsg, negMsg) => 
 				closable: false,
 				closeOnEsc: false,
 				onPositiveClick: () => {
-					window.$notify['success'](posMsg)
+					fetchNui('atl_dialog_resp', {id: id, resp: true}).then(() => {
+						window.$notify['success'](posMsg)
+					})
 				},
 				onNegativeClick: () => {
-					window.$notify['error'](negMsg)
+					fetchNui('atl_dialog_resp', {id: id, resp: false}).then(() => {
+						window.$notify['error'](negMsg)
+					})
 				}
 			})
 			return
