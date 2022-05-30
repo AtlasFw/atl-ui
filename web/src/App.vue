@@ -53,9 +53,12 @@ document.addEventListener('keyup', (e) => {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'notify',
+            action: 'advNotify',
 						type: 'info',
-						message: 'You pressed the Escape key!'
+						title: 'Nuevo mensaje',
+						content: 'Hazme este trabajo porfa bomba',
+						meta: 'De Painless',
+						avatar: 'https://images-ext-1.discordapp.net/external/nzmm2ZwDEZMf4FGH1MBGpytd0v8tyyc0S8n2UrmNrBU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/752878131718914118/741789906a99b64c770bd15bc33f9d50.png?width=554&height=554',
           }
         })
     )
@@ -70,9 +73,9 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
   <NMessageProvider :placement="state.global.position" :max="state.global.max">
     <NNotificationProvider :placement="state.global.position" :max="state.global.max">
       <NDialogProvider>
+				<Feedback/>
         <Hud :health="state.health"/>
         <Carhud/>
-        <Feedback/>
       </NDialogProvider>
     </NNotificationProvider>
   </NMessageProvider>
@@ -87,6 +90,7 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+	height: 100vh;
+	margin: 0 auto;
 }
 </style>

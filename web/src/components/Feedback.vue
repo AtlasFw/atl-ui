@@ -14,7 +14,7 @@ const state = reactive({
     height: 14,
     indicator: true,
     placement: 'inside'
-  }
+  },
 })
 
 window.$notify = useMessage()
@@ -55,7 +55,6 @@ window.$progress = (type, status, duration, indicator, placement) => {
 </template>
 
 <style scoped>
-
 .slide-fade-enter-active {
   transition: all 0.15s ease-out;
 }
