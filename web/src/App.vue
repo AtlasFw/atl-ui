@@ -31,13 +31,10 @@ const handleMessage = (e) => {
 
       break;
     case 'dialog':
-
+			Start.Dialog(e.data.type, e.data.title, e.data.content, e.data.posBtn, e.data.negBtn, e.data.respMsg)
       break;
     case 'hud':
 			state.health = e.data.health
-      break;
-    case 'image':
-
       break;
     case 'progress':
       Start.Progress(e.data.type, e.data.status, e.data.duration, e.data.indicator, e.data.placement)
@@ -49,16 +46,18 @@ const handleMessage = (e) => {
 }
 
 document.addEventListener('keyup', (e) => {
-  if (e.key === 'Escape') {
+  if (e.key === 'Enter') {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'advNotify',
-						type: 'info',
-						title: 'Nuevo mensaje',
-						content: 'Hazme este trabajo porfa bomba',
-						meta: 'De Painless',
-						avatar: 'https://images-ext-1.discordapp.net/external/nzmm2ZwDEZMf4FGH1MBGpytd0v8tyyc0S8n2UrmNrBU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/752878131718914118/741789906a99b64c770bd15bc33f9d50.png?width=554&height=554',
+            action: 'dialog',
+						type: 'error',
+						title: 'Enter',
+						content: 'You pressed enter',
+						posBtn: 'OK',
+						negBtn: 'Cancel',
+						posMsg: 'OK',
+						negMsg: 'Cancel',
           }
         })
     )

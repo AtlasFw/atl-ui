@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
-import { useMessage, useNotification, NProgress, NCountdown } from 'naive-ui'
+import {useMessage, useNotification, useDialog, NProgress } from 'naive-ui';
 import { fetchNui } from '../utils/fetchNui'
 
 // https://www.naiveui.com/en-US/dark/components/progress for more info
@@ -19,6 +19,7 @@ const state = reactive({
 
 window.$notify = useMessage()
 window.$advnotify = useNotification()
+window.$dialog = useDialog()
 window.$progress = (type, status, duration, indicator, placement) => {
   if (state.progress.active) return false
   !duration || duration < 1000 ? duration = 1000 : null

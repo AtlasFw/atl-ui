@@ -17,8 +17,13 @@ const themeOverrides = {
     "colorWarning": "rgba(156, 139, 71, 1)",
     "colorLoading": "rgba(123, 123, 123, 1)"
   },
-  "Notification": {
+  Notification: {
     "color": "rgba(75, 85, 99, 1)"
+  },
+  Dialog: {
+    "color": "rgba(75, 85, 99, 1)",
+    "titleTextColor": "rgba(255, 255, 255, 1)",
+    "textColor": "rgba(255, 255, 255, 0.78)"
   }
 }
 
@@ -27,5 +32,9 @@ const app = createApp({
     default: () => h(App)
   })
 })
+
+const meta = document.createElement('meta')
+meta.name = 'naive-ui-style'
+document.head.appendChild(meta)
 
 app.mount('#app')
