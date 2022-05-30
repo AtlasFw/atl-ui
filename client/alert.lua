@@ -1,7 +1,7 @@
 local count = 0
 UI.AlertResp = {}
 UI.Alert = function(data, cb)
-	if type(data.type) ~= "string" or type(data.message) ~= "string" then
+	if type(data.type) ~= "string" or type(data.title) ~= "string" or type(data.description) ~= "string" then
 		error("UI: Missing required parameters for alert")
 		return false
 	end
@@ -14,9 +14,10 @@ UI.Alert = function(data, cb)
 	UI.AlertResp[count] = cb
 
 	SendNUIMessage({
-		action = "notify",
+		action = "alert",
 		type = data.type,
-		message = data.message,
+		title = data.title,
+		description = data.description,
 		duration = data.duration,
 	})
 	return true
