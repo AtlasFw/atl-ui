@@ -25,7 +25,7 @@ const handleMessage = (e) => {
       Start.AdvNotify(e.data.type, e.data.title, e.data.description, e.data.content, duration, e.data.meta, e.data.avatar)
       break;
     case 'alert':
-
+			Start.Alert(e.data.type, e.data.title, e.data.description, duration)
       break;
     case 'carhud':
 
@@ -50,14 +50,11 @@ document.addEventListener('keyup', (e) => {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'dialog',
-						type: 'error',
+            action: 'alert',
+						type: 'info',
 						title: 'Enter',
-						content: 'You pressed enter',
-						posBtn: 'OK',
-						negBtn: 'Cancel',
-						posMsg: 'OK',
-						negMsg: 'Cancel',
+						description: 'You pressed enter',
+						duration: 3000,
           }
         })
     )

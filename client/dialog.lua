@@ -5,7 +5,7 @@ UI.Dialog = function(id, data, cb)
 		return false
 	end
 	if type(data.type) ~= "string" or type(data.title) ~= "string" or type(data.content) ~= "string" or type(data.posBtn) ~= "string" or type(data.negBtn) ~= "string" or type(data.posMsg) ~= "string" or type(data.negMsg) ~= "string" then
-		error("UI: Missing required parameters for notify")
+		error("UI: Missing required parameters for dialog")
 		return false
 	end
 	if type(cb) ~= "function" then
