@@ -4,7 +4,7 @@ import Start from './common/index.js'
 import Hud from './components/Hud.vue';
 import Carhud from './components/Carhud.vue';
 import Feedback from './components/Feedback.vue';
-import { NMessageProvider, NDialogProvider, NNotificationProvider } from 'naive-ui'
+import { NGlobalStyle, NMessageProvider, NDialogProvider, NNotificationProvider } from 'naive-ui'
 
 const state = reactive({
   global: {
@@ -50,11 +50,14 @@ document.addEventListener('keyup', (e) => {
     window.dispatchEvent(
         new MessageEvent('message', {
           data: {
-            action: 'alert',
+            action: 'advNotify',
 						type: 'info',
-						title: 'Enter',
-						description: 'You pressed enter',
-						duration: 3000,
+						title: 'New Message',
+						content: 'Hey, when you gonna get to working on Atlas?',
+						description: 'You have a new message from Germancito',
+						meta: new Date().toLocaleString(),
+						avatar: 'https://cdn.discordapp.com/avatars/546732670005149706/a_e13719b9b4bd45834565ef8fb34e325e.gif?size=256',
+						duration: 5000,
           }
         })
     )
@@ -66,26 +69,26 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
 </script>
 
 <template>
-  <NMessageProvider :placement="state.global.position" :max="state.global.max">
-    <NNotificationProvider :placement="state.global.position" :max="state.global.max">
-      <NDialogProvider>
+	<NMessageProvider :placement="state.global.position" :max="state.global.max">
+		<NNotificationProvider :placement="state.global.position" :max="state.global.max">
+			<NDialogProvider>
 				<Feedback/>
-        <Hud :health="state.health"/>
-        <Carhud/>
-      </NDialogProvider>
-    </NNotificationProvider>
-  </NMessageProvider>
+				<Hud :health="state.health"/>
+				<Carhud/>
+			</NDialogProvider>
+		</NNotificationProvider>
+	</NMessageProvider>
+	<NGlobalStyle/>
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+	background: #2c3e50;
 	height: 100vh;
 	margin: 0 auto;
 }
