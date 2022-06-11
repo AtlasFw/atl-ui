@@ -4,6 +4,11 @@ import { NConfigProvider, darkTheme } from 'naive-ui'
 import './index.css'
 
 const themeOverrides = {
+  common: {
+    "fontFamily": 'Inter',
+    "fontWeight": "500",
+    "fontWeightStrong": "700",
+  },
   Message: {
     "colorError": "rgba(125, 76, 76, 1)",
     "colorSuccess": "rgba(84, 153, 105, 1)",
@@ -24,6 +29,13 @@ const themeOverrides = {
     "color": "rgba(75, 85, 99, 1)",
     "titleTextColor": "rgba(255, 255, 255, 1)",
     "textColor": "rgba(255, 255, 255, 0.78)"
+  },
+  Alert: {
+    "colorInfo": "rgba(74, 115, 171, 0.4)",
+    "colorSuccess": "rgba(84, 153, 105, 0.4)",
+    "colorWarning": "rgba(166, 145, 61, 0.4)",
+    "colorError": "rgba(139, 77, 77, 0.4)",
+    "iconColorError": "rgb(208, 58, 82)"
   }
 }
 
