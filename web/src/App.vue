@@ -12,8 +12,12 @@ const state = reactive({
     max: 3,
     position: 'top-right',
   },
-	health: 100,
+	hud: {
+		on: true,
+		health: 100,
+	},
 	car: {
+		on: false,
 		speed: 0,
 		fuel: 100,
 		gear: 0,
@@ -34,15 +38,34 @@ const handleMessage = (e) => {
     case 'alert':
 			Start.Alert(e.data.type, e.data.title, e.data.description, duration)
       break;
-    case 'carhud':
-
+    case 'carhudSpeed':
+			state.car.speed = e.data.speed
       break;
+		case 'carhudData':
+			state.car.on = e.data.on
+			state.car.fuel = e.data.fuel
+			state.car.gear = e.data.gear
+			state.car.seatbelt = e.data.seatbelt
+			state.car.lights = e.data.lights
+			break;
+		case 'showCarhud':
+			state.car.on = true
+			break;
+		case 'hideCarhud':
+			state.car.on = false
+			break;
     case 'dialog':
 			Start.Dialog(e.data.type, e.data.title, e.data.content, e.data.posBtn, e.data.negBtn, e.data.respMsg)
       break;
     case 'hud':
 			state.health = e.data.health
       break;
+		case 'showHud':
+			state.hud.on = true
+			break;
+		case 'hideHud':
+			state.hud.on = false
+			break;
     case 'progress':
       Start.Progress(e.data.type, e.data.status, e.data.duration, e.data.indicator, e.data.placement)
       break;
@@ -80,8 +103,8 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
 		<NNotificationProvider :placement="state.global.position" :max="state.global.max">
 			<NDialogProvider>
 				<Feedback/>
-				<Hud :health="state.health"/>
-				<Carhud :speed="state.car.speed" :fuel="state.car.fuel" :gear="state.car.gear" :lights="state.car.lights" :seatbelt="state.car.seatbelt"/>
+				<Hud v-if="state.hud.on" :health="state.hud.health"/>
+				<Carhud v-if="state.car.on" :speed="state.car.speed" :fuel="state.car.fuel" :gear="state.car.gear" :lights="state.car.lights" :seatbelt="state.car.seatbelt"/>
 			</NDialogProvider>
 		</NNotificationProvider>
 	</NMessageProvider>

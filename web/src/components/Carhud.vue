@@ -36,7 +36,7 @@ const seatbeltState = (seatbelt) => seatbelt ? 'text-neutral-50' : 'text-neutral
 </script>
 
 <template>
-  <div class="absolute flex justify-end items-end bg-black h-full w-full overflow-hidden">
+  <div class="absolute flex justify-end items-end h-full w-full overflow-hidden">
 		<div class="flex flex-col justify-center items-start text-sm mb-3 mr-3 fuel">
 			<div class="mb-1 flex flex-row justify-between w-full">
 				<div class="flex items-end">
