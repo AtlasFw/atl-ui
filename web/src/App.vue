@@ -13,6 +13,13 @@ const state = reactive({
     position: 'top-right',
   },
 	health: 100,
+	car: {
+		speed: 0,
+		fuel: 100,
+		gear: 0,
+		seatbelt: false,
+		lights: 0
+	}
 });
 
 const handleMessage = (e) => {
@@ -74,7 +81,7 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
 			<NDialogProvider>
 				<Feedback/>
 				<Hud :health="state.health"/>
-				<Carhud/>
+				<Carhud :speed="state.car.speed" :fuel="state.car.fuel" :gear="state.car.gear" :lights="state.car.lights" :seatbelt="state.car.seatbelt"/>
 			</NDialogProvider>
 		</NNotificationProvider>
 	</NMessageProvider>
@@ -88,7 +95,6 @@ onUnmounted(() => window.removeEventListener('message', handleMessage));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-	background: #2c3e50;
 	height: 100vh;
 	margin: 0 auto;
 }

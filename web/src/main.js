@@ -8,6 +8,7 @@ const themeOverrides = {
     "fontFamily": 'Inter',
     "fontWeight": "500",
     "fontWeightStrong": "700",
+    "backgroundColor": "transparent",
   },
   Message: {
     "colorError": "rgba(125, 76, 76, 1)",
