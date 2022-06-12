@@ -1,5 +1,6 @@
 UI = {
-  HudState = true
+  HudState = true,
+  CarhudState = true,
 }
 
 exports('UI', function()
