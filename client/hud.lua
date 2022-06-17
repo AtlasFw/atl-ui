@@ -1,5 +1,6 @@
 local function startHud()
 	UI.HudState = true
+	SendNUIMessage({ action = "showHud" })
 	CreateThread(function()
 		while UI.HudState do
 			local ped = PlayerPedId()
@@ -16,4 +17,10 @@ local function startHud()
 	end)
 end
 
-expots('startHud', startHud)
+local function stopHud()
+	UI.HudState = false
+	SendNUIMessage({ action = "hideHud" })
+end
+
+exports('startHud', startHud)
+exports('stopHud', stopHud)

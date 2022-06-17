@@ -13,7 +13,7 @@ const state = reactive({
     position: 'top-right',
   },
 	hud: {
-		on: true,
+		on: false,
 		health: 100,
 	},
 	car: {
