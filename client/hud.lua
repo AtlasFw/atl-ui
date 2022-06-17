@@ -16,4 +16,4 @@ local function startHud()
 	end)
 end
 
-startHud()
+expots('startHud', startHud)

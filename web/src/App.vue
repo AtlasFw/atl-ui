@@ -38,20 +38,14 @@ const handleMessage = (e) => {
     case 'alert':
 			Start.Alert(e.data.type, e.data.title, e.data.description, duration)
       break;
-    case 'carhudSpeed':
-			state.car.speed = e.data.speed
-      break;
 		case 'carhudData':
 			state.car.on = e.data.on
 			state.car.fuel = e.data.fuel
 			state.car.gear = e.data.gear
-			state.car.seatbelt = e.data.seatbelt
 			state.car.lights = e.data.lights
+			state.car.speed = e.data.speed
 			break;
-		case 'showCarhud':
-			state.car.on = true
-			break;
-		case 'hideCarhud':
+		case 'carhudOff':
 			state.car.on = false
 			break;
     case 'dialog':
